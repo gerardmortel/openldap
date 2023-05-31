@@ -16,6 +16,6 @@ The purpose of this repo is to install openldap on OpenShift
 4. wget https://github.com/gerardmortel/openldap/archive/refs/heads/main.zip
 5. unzip main.zip
 6. rm -f main.zip
-7. cd openldap
+7. cd openldap-main
 8. Put your values for DOCKERUSERNAME and DOCKERPASSWORD inside file 02_setup_env.sh
 9. ./01_driver.sh

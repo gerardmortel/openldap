@@ -6,6 +6,6 @@ export SERVICEACCOUNTNAME="openldap"
 # Replace "gmortel" with your docker repo user name
 export DOCKERUSERNAME=""
 export DOCKERPASSWORD=""
-export DOCKERHUBIMAGE="${DOCKERUSERNAME}/openldap_bootstrap:1.0"
+export DOCKERHUBIMAGE="docker.io/${DOCKERUSERNAME}/openldap_bootstrap:1.0"
 export LDAPADMINPASSWORD=""
 export STORAGECLASSNAME="nfs-managed-storage"

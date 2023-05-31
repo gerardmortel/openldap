@@ -3,7 +3,7 @@
 # Build Container Image
 cat << EOF > new_Dockerfile_OpenLDAP
 #Pull the latest base image from Dockerhub
-FROM osixia/openldap
+FROM docker.io/osixia/openldap:latest
 
 # Set the environment variables
 ENV LDAP_ORGANISATION="Your Company Name" \

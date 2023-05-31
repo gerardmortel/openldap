@@ -3,7 +3,7 @@
 # Put the following into a Dockerifle
 cat << EOF > new_Dockerfile_phpldapadmin
 #Pull the latest base image from Dockerhub
-FROM osixia/phpldapadmin
+FROM docker.io/osixia/phpldapadmin:latest
 
 # Set the environment variables
 ENV PHPLDAPADMIN_HTTPS="false"

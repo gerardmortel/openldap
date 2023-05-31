@@ -1,0 +1,197 @@
+
+### Setup the Users OU
+dn: ou=users,dc=ibm,dc=com
+changetype: add
+objectClass: organizationalUnit
+description: All users in organization
+ou: users
+
+### Setup the Groups OU
+dn: ou=groups,dc=ibm,dc=com
+changetype: add
+objectClass: organizationalUnit
+objectClass: top
+ou: groups
+
+### Setup all of the users
+dn: uid=todd,ou=users,dc=ibm,dc=com
+changetype: add
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: toddCN
+sn: toddSN
+uid: todd
+userPassword: Passw0rd
+
+dn: uid=james,ou=users,dc=ibm,dc=com
+changetype: add
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: jamesCN
+sn: jamesSN
+uid: james
+userPassword: Passw0rd
+
+dn: uid=sarah,ou=users,dc=ibm,dc=com
+changetype: add
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: sarahCN
+sn: sarahSN
+uid: sarah
+userPassword: Passw0rd
+
+dn: uid=bob,ou=users,dc=ibm,dc=com
+changetype: add
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: bobCN
+sn: bobSN
+uid: bob
+userPassword: Passw0rd
+
+dn: uid=laura,ou=users,dc=ibm,dc=com
+changetype: add
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: lauraCN
+sn: lauraSN
+uid: laura
+userPassword: Passw0rd
+
+dn: uid=josie,ou=users,dc=ibm,dc=com
+changetype: add
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: josieCN
+sn: josieSN
+uid: josie
+userPassword: Passw0rd
+
+dn: uid=carlos,ou=users,dc=ibm,dc=com
+changetype: add
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: carlosCN
+sn: carlosSN
+uid: carlos
+userPassword: Passw0rd
+
+dn: uid=jackie,ou=users,dc=ibm,dc=com
+changetype: add
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: jackieCN
+sn: jackieSN
+uid: jackie
+userPassword: Passw0rd
+
+dn: uid=tony,ou=users,dc=ibm,dc=com
+changetype: add
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: tonyCN
+sn: tonySN
+uid: tony
+userPassword: Passw0rd
+
+### Create all of the groups and assign the users
+dn: cn=developers,ou=groups,dc=ibm,dc=com
+changetype: add
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: developers
+uniquemember: uid=todd,ou=users,dc=ibm,dc=com
+uniquemember: uid=james,ou=users,dc=ibm,dc=com
+uniquemember: uid=sarah,ou=users,dc=ibm,dc=com
+
+dn: cn=operations,ou=groups,dc=ibm,dc=com
+changetype: add
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: operations
+uniquemember: uid=bob,ou=users,dc=ibm,dc=com
+uniquemember: uid=laura,ou=users,dc=ibm,dc=com
+uniquemember: uid=josie,ou=users,dc=ibm,dc=com
+
+dn: cn=support,ou=groups,dc=ibm,dc=com
+changetype: add
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: support
+uniquemember: uid=carlos,ou=users,dc=ibm,dc=com
+uniquemember: uid=jackie,ou=users,dc=ibm,dc=com
+uniquemember: uid=tony,ou=users,dc=ibm,dc=com
+
+### Added for ODM
+dn: cn=APP_BAP0_RTS_CONFIG_MANAGER,ou=groups,dc=ibm,dc=com
+changetype: add
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: rtsConfigManagers
+uniquemember: uid=todd,ou=users,dc=ibm,dc=com
+uniquemember: uid=james,ou=users,dc=ibm,dc=com
+uniquemember: uid=sarah,ou=users,dc=ibm,dc=com
+
+dn: cn=APP_BAP0_RTS_ADMINISTRATOR,ou=groups,dc=ibm,dc=com
+changetype: add
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: rtsAdministrators
+uniquemember: uid=bob,ou=users,dc=ibm,dc=com
+uniquemember: uid=laura,ou=users,dc=ibm,dc=com
+uniquemember: uid=josie,ou=users,dc=ibm,dc=com
+
+dn: cn=APP_BAP0_RES_MONITOR,ou=groups,dc=ibm,dc=com
+changetype: add
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: resMonitors
+uniquemember: uid=carlos,ou=users,dc=ibm,dc=com
+uniquemember: uid=jackie,ou=users,dc=ibm,dc=com
+uniquemember: uid=tony,ou=users,dc=ibm,dc=com
+
+dn: cn=APP_BAP0_RES_DEPLOYER,ou=groups,dc=ibm,dc=com
+changetype: add
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: resDeployers
+uniquemember: uid=todd,ou=users,dc=ibm,dc=com
+uniquemember: uid=james,ou=users,dc=ibm,dc=com
+uniquemember: uid=sarah,ou=users,dc=ibm,dc=com
+
+dn: cn=APP_BAP0_RES_ADMINISTRATOR,ou=groups,dc=ibm,dc=com
+changetype: add
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: resAdministrators
+uniquemember: uid=bob,ou=users,dc=ibm,dc=com
+uniquemember: uid=laura,ou=users,dc=ibm,dc=com
+uniquemember: uid=josie,ou=users,dc=ibm,dc=com
+
+dn: cn=APP_BAP0_RES_EXECUTOR,ou=groups,dc=ibm,dc=com
+changetype: add
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: resExecutors
+uniquemember: uid=carlos,ou=users,dc=ibm,dc=com
+uniquemember: uid=jackie,ou=users,dc=ibm,dc=com
+uniquemember: uid=tony,ou=users,dc=ibm,dc=com

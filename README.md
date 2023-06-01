@@ -13,6 +13,7 @@ The purpose of this repo is to install openldap on OpenShift
 1. ssh into the infrastructure node as root (e.g. ssh root@api.slavers.cp.fyre.ibm.com)
 2. yum install -y git unzip podman
 3. cd
+4. rm -f main.zip
 4. wget https://github.com/gerardmortel/openldap/archive/refs/heads/main.zip
 5. unzip main.zip
 6. rm -f main.zip

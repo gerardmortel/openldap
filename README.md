@@ -11,7 +11,6 @@ The purpose of this repo is to install openldap on OpenShift
 # Prerequisites
 1. OpenShift cluster on Fyre
 2. NFS Storage configured https://github.com/gerardmortel/nfs-storage-for-fyre
-3. Docker hub password
 
 # Instructions
 1. ssh into the infrastructure node as root (e.g. ssh root@api.slavers.cp.fyre.ibm.com)
@@ -25,3 +24,4 @@ The purpose of this repo is to install openldap on OpenShift
 9. cd openldap-main
 10. Put your values for LDAPADMINPASSWORD inside file 02_setup_env.sh
 11. ./01_driver.sh
+12. Login with cn=admin,dc=your,dc=company,dc=com and the password you set in step 10

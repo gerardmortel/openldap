@@ -18,9 +18,10 @@ The purpose of this repo is to install openldap on OpenShift
 2. yum install -y git unzip podman
 3. cd
 4. rm -f main.zip
-4. wget https://github.com/gerardmortel/openldap/archive/refs/heads/main.zip
-5. unzip main.zip
-6. rm -f main.zip
-7. cd openldap-main
-8. Put your values for DOCKERUSERNAME DOCKERPASSWORD LDAPADMINPASSWORD inside file 02_setup_env.sh
-9. ./01_driver.sh
+5. rm -rf openldap-main
+6. wget https://github.com/gerardmortel/openldap/archive/refs/heads/main.zip
+7. unzip main.zip
+8. rm -f main.zip
+9. cd openldap-main
+10. Put your values for DOCKERUSERNAME DOCKERPASSWORD LDAPADMINPASSWORD inside file 02_setup_env.sh
+11. ./01_driver.sh

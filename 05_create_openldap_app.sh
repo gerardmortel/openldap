@@ -20,7 +20,15 @@ oc new-app --name openldap --as-deployment-config -e LDAP_ADMIN_PASSWORD=${LDAPA
 
 # Patch the app with a Recreate strategy to stop the constant pod killing
 #oc patch dc/openldap -p '{"spec":{"strategy":{"type":"Recreate"},"template":{"spec":{"serviceAccountName":"openldap"}}}}'
-oc patch dc/openldap -p '{"spec":{"strategy":{"type":"Recreate"},"template":{"spec":{"serviceAccountName":${SERVICEACCOUNTNAME}}}}}'
+cat << EOF > new_dc_openldap_patch.yaml
+spec:
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      serviceAccountName: ${SERVICEACCOUNTNAME}
+EOF
+oc patch dc/openldap --patch-file='new_dc_openldap_patch.yaml' --type='merge'
 
 # Expose the app
 oc expose dc/openldap --type=LoadBalancer --name=ingress-openldap
@@ -33,3 +41,20 @@ oc set volume dc/openldap --add --name=ldap-config --mount-path=/etc/ldap/slapd.
 # To delete the volumes use the next 2 commands.  Otherwise DO NOT RUN
 #oc set volume dc/openldap --remove=true --name=ldap-data
 #oc set volume dc/openldap --remove=true --name=ldap-config
+
+
+
+
+
+
+
+
+
+
+
+spec:
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      serviceAccountName: openldap

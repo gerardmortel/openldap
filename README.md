@@ -1,6 +1,10 @@
 # Install OpenLDAP on OpenShift
 # https://github.ibm.com/gmortel/openldap
 
+# Resources
+Using the OCP registry
+https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/22.0.2?topic=SSYHZ8_22.0.2/com.ibm.dba.install/op_topics/tsk_images_enterp.htm
+
 # Purpose
 The purpose of this repo is to install openldap on OpenShift
 

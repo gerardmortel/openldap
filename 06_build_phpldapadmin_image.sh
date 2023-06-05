@@ -12,10 +12,7 @@ EXPOSE 8090
 EOF
 
 # Build the phpldapadmin image
-podman build -t docker.io/${DOCKERUSERNAME}/phpldapadmin_new:1.0 -f new_Dockerfile_phpldapadmin
+podman build -t ${PHPLDAPADMINIMAGE} -f new_Dockerfile_phpldapadmin
 
-# Login to docker
-podman login -u ${DOCKERUSERNAME} -p ${DOCKERPASSWORD}
-
-# Push to docker hub
-podman push docker.io/${DOCKERUSERNAME}/phpldapadmin_new:1.0
+# Push to OpenShift cluster registry
+podman push ${PHPLDAPADMINIMAGE}

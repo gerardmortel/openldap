@@ -14,10 +14,4 @@ COPY bootstrap.ldif /container/service/slapd/assets/config/bootstrap/ldif/50-boo
 EOF
 
 # Build the openldap image
-podman build -t docker.io/${DOCKERUSERNAME}/openldap_bootstrap:1.0 -f new_Dockerfile_OpenLDAP
-
-# Login to docker
-podman login -u ${DOCKERUSERNAME} -p ${DOCKERPASSWORD}
-
-# Push to docker hub
-podman push docker.io/${DOCKERUSERNAME}/openldap_bootstrap:1.0
+podman build -t ${OPENLDAPIMAGE} -f new_Dockerfile_OpenLDAP

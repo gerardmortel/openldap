@@ -15,7 +15,8 @@ oc create serviceaccount ${SERVICEACCOUNTNAME}
 oc adm policy add-scc-to-user anyuid system:serviceaccount:${NS}:${SERVICEACCOUNTNAME}
 
 # Create the openldap app
-oc new-app --name openldap --as-deployment-config -e LDAP_ADMIN_PASSWORD=${LDAPADMINPASSWORD} ${DOCKERHUBIMAGE}
+# oc new-app --name openldap --as-deployment-config -e LDAP_ADMIN_PASSWORD=${LDAPADMINPASSWORD} ${DOCKERHUBIMAGE}
+oc new-app --name openldap --as-deployment-config -e LDAP_ADMIN_PASSWORD=${LDAPADMINPASSWORD} ${OPENLDAPIMAGESTREAM}
 
 # Patch the app with a Recreate strategy to stop the constant pod killing
 #oc patch dc/openldap -p '{"spec":{"strategy":{"type":"Recreate"},"template":{"spec":{"serviceAccountName":"openldap"}}}}'

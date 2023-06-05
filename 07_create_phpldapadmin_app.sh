@@ -13,6 +13,6 @@ spec:
     spec:
       serviceAccountName: ${SERVICEACCOUNTNAME}
 EOF
-oc patch dc/openldap --patch-file='new_dc_phpldapadmin_patch.yaml' --type='merge'
+oc patch dc/phpldapadmin --patch-file='new_dc_phpldapadmin_patch.yaml' --type='merge'
 
 oc expose service/phpldapadmin

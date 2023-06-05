@@ -4,8 +4,10 @@
 oc patch configs.imageregistry.operator.openshift.io/cluster --type merge -p '{"spec":{"defaultRoute":true}}'
 
 # Check access exists to OCP image registry
-oc registry info --public
+echo "Sleeping for 2 minutes to allow for patch to take effect"
 sleep 120
+echo "Checking for public route of openshift cluster registry"
+oc registry info --public
 
 export NS="cp4ba"
 export SERVICEACCOUNTNAME="openldap"

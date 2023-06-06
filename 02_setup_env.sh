@@ -3,11 +3,19 @@
 # Enable public registry route on OpenShift cluster
 oc patch configs.imageregistry.operator.openshift.io/cluster --type merge -p '{"spec":{"defaultRoute":true}}'
 
-# Check access exists to OCP image registry
-echo "Sleeping for 2 minutes to allow for patch to take effect"
-sleep 120
-echo "Checking for public route of openshift cluster registry"
-oc registry info --public
+# Check if access exists to OCP image registry
+while [ true ]
+do
+    oc registry info --public
+    if [ $? -eq 0 ]; then
+        echo "Public route for OpenShift cluster registry IS available."
+        break
+    else
+        echo "Public route for OpenShift cluster registry is NOT available."
+        echo "Sleeping for 10 seconds"
+        sleep 10
+    fi
+done
 
 export NS="cp4ba"
 export SERVICEACCOUNTNAME="openldap"

@@ -29,7 +29,9 @@ oc create configmap registry-config -n openshift-config --from-file=$HOSTNAME..5
 oc patch image.config.openshift.io/cluster --patch '{"spec":{"additionalTrustedCA":{"name":"registry-config"}}}' --type=merge
 
 # Login to the OpenShift cluster registry
-podman login $(oc registry info --public) -u kubeadmin -p $(oc whoami -t) --tls-verify=false
+#podman login $(oc registry info --public) -u kubeadmin -p $(oc whoami -t) --tls-verify=false
+podman login $(oc registry info --public) -u kubeadmin -p ${KUBEADMINPASSWORD} --tls-verify=false
+
 
 # Push image to OpenShift cluster registry
 podman push ${OPENLDAPIMAGE} --tls-verify=false

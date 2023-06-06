@@ -24,6 +24,7 @@ export OPENLDAPIMAGE="$(oc registry info --public)/${NS}/${OPENLDAPIMAGESTREAM}"
 export PHPLDAPADMINIMAGESTREAM="phpldapadmin_new:1.0"
 export PHPLDAPADMINIMAGE="$(oc registry info --public)/${NS}/${PHPLDAPADMINIMAGESTREAM}"
 export LDAPADMINPASSWORD=""
+export KUBEADMINPASSWORD=""
 export STORAGECLASSNAME="nfs-managed-storage"
 
 echo ""

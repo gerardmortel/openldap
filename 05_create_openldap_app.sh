@@ -41,3 +41,7 @@ oc set volume dc/openldap --add --name=ldap-config --mount-path=/etc/ldap/slapd.
 # To delete the volumes use the next 2 commands.  Otherwise DO NOT RUN
 #oc set volume dc/openldap --remove=true --name=ldap-data
 #oc set volume dc/openldap --remove=true --name=ldap-config
+
+echo ""
+echo "================================================================================"
+echo ""

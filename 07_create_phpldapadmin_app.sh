@@ -16,3 +16,7 @@ EOF
 oc patch dc/phpldapadmin --patch-file='new_dc_phpldapadmin_patch.yaml' --type='merge'
 
 oc expose service/phpldapadmin
+
+echo ""
+echo "================================================================================"
+echo ""

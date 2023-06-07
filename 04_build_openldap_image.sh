@@ -15,3 +15,10 @@ EOF
 
 # Build the openldap image
 podman build -t ${OPENLDAPIMAGE} -f new_Dockerfile_OpenLDAP
+
+# Push image to OpenShift cluster registry
+podman push ${OPENLDAPIMAGE} --tls-verify=false
+
+echo ""
+echo "================================================================================"
+echo ""

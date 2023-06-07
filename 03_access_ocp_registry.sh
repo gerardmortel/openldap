@@ -34,5 +34,6 @@ oc login -u kubeadmin -p $KUBEADMINPASSWORD
 # Login to the OpenShift cluster registry
 podman login $(oc registry info --public) -u kubeadmin -p $(oc whoami -t) --tls-verify=false
 
-# Push image to OpenShift cluster registry
-podman push ${OPENLDAPIMAGE} --tls-verify=false
+echo ""
+echo "================================================================================"
+echo ""

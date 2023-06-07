@@ -9,6 +9,7 @@ do
     oc registry info --public
     if [ $? -eq 0 ]; then
         echo "Public route for OpenShift cluster registry IS available."
+        export OCPREGISTRYROUTE="$(oc registry info --public)"
         break
     else
         echo "Public route for OpenShift cluster registry is NOT available."
@@ -20,9 +21,9 @@ done
 export NS="cp4ba"
 export SERVICEACCOUNTNAME="openldap"
 export OPENLDAPIMAGESTREAM="openldap_bootstrap:1.0"
-export OPENLDAPIMAGE="$(oc registry info --public)/${NS}/${OPENLDAPIMAGESTREAM}"
+export OPENLDAPIMAGE="${OCPREGISTRYROUTE}/${NS}/${OPENLDAPIMAGESTREAM}"
 export PHPLDAPADMINIMAGESTREAM="phpldapadmin_new:1.0"
-export PHPLDAPADMINIMAGE="$(oc registry info --public)/${NS}/${PHPLDAPADMINIMAGESTREAM}"
+export PHPLDAPADMINIMAGE="${OCPREGISTRYROUTE}/${NS}/${PHPLDAPADMINIMAGESTREAM}"
 export LDAPADMINPASSWORD=""
 export KUBEADMINPASSWORD=""
 export STORAGECLASSNAME="nfs-managed-storage"

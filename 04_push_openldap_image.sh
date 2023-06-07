@@ -25,7 +25,7 @@ rm -f /certs/ca.crt
 cp /certs/domain.crt /certs/ca.crt
 oc create configmap registry-config -n openshift-config --from-file=$HOSTNAME..5000=/certs/ca.crt
 
-#  Tell the OpenShift cluster to trust the docker private registry
+#  Tell the OpenShift cluster to trust the podman private registry
 oc patch image.config.openshift.io/cluster --patch '{"spec":{"additionalTrustedCA":{"name":"registry-config"}}}' --type=merge
 
 # Login to the OpenShift cluster

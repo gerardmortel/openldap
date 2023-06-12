@@ -31,8 +31,19 @@ oc patch image.config.openshift.io/cluster --patch '{"spec":{"additionalTrustedC
 # Login to the OpenShift cluster
 oc login -u kubeadmin -p $KUBEADMINPASSWORD
 
-# Login to the OpenShift cluster registry
-podman login $(oc registry info --public) -u kubeadmin -p $(oc whoami -t) --tls-verify=false
+# Check if we can login to the OpenShift cluster registry
+while [ true ]
+do
+    podman login $(oc registry info --public) -u kubeadmin -p $(oc whoami -t) --tls-verify=false
+    if [ $? -eq 0 ]; then
+        echo "Successfully logged in to OpenShift cluster registry"
+        break
+    else
+        echo "Unable to login to OpenShift cluster registry"
+        echo "Sleeping for 10 seconds"
+        sleep 10
+    fi
+done
 
 echo ""
 echo "================================================================================"

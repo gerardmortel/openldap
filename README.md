@@ -5,6 +5,9 @@
 Using the OCP registry
 https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/22.0.2?topic=SSYHZ8_22.0.2/com.ibm.dba.install/op_topics/tsk_images_enterp.htm
 
+cloudctl case and corresponding ibm-pak commands
+https://www.ibm.com/docs/en/cpfs?topic=plugin-cloudctl-case-corresponding-pak-commands
+
 # Purpose
 The purpose of this repo is to install openldap on OpenShift
 

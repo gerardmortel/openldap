@@ -22,7 +22,3 @@ podman build -t ${PHPLDAPADMINIMAGE} -f new_Dockerfile_phpldapadmin
 
 # Push to OpenShift cluster registry
 podman push ${PHPLDAPADMINIMAGE} --tls-verify=false
-
-echo ""
-echo "================================================================================"
-echo ""

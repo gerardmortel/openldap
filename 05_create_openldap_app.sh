@@ -43,7 +43,3 @@ oc expose dc/openldap --type=LoadBalancer --name=ingress-openldap
 # Create storage for the openldap app
 oc set volume dc/openldap --add --name=ldap-data --mount-path=/var/lib/ldap -t pvc --claim-name=ldap-data --claim-size=1G --claim-class=${STORAGECLASSNAME}
 oc set volume dc/openldap --add --name=ldap-config --mount-path=/etc/ldap/slapd.d -t pvc --claim-name=ldap-config --claim-size=1G --claim-class=${STORAGECLASSNAME}
-
-echo ""
-echo "================================================================================"
-echo ""

@@ -19,7 +19,3 @@ oc delete svc/ingress-openldap
 oc delete dc/phpldapadmin
 oc delete svc/phpldapadmin
 oc delete route/phpldapadmin
-
-echo ""
-echo "================================================================================"
-echo ""

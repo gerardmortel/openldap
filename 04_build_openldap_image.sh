@@ -1,5 +1,11 @@
 #!/bin/bash
 
+echo ""
+echo "================================================================================"
+echo "=== In 04_build_openldap_image.sh =============================================="
+echo "================================================================================"
+echo ""
+
 # Build Container Image
 cat << EOF > new_Dockerfile_OpenLDAP
 #Pull the latest base image from Dockerhub

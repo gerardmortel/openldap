@@ -1,5 +1,11 @@
 #!/bin/bash
 
+echo ""
+echo "================================================================================"
+echo "=== In 05_create_openldap_app.sh ==============================================="
+echo "================================================================================"
+echo ""
+
 # Create the project where openldap will live if it does not already exist
 #oc new-project ${CP4BANAMESPACE}
 oc new-project ${NS}

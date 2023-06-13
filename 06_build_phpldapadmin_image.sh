@@ -1,5 +1,11 @@
 #!/bin/bash
 
+echo ""
+echo "================================================================================"
+echo "=== In 06_build_phpldapadmin_image.sh =========================================="
+echo "================================================================================"
+echo ""
+
 # Put the following into a Dockerifle
 cat << EOF > new_Dockerfile_phpldapadmin
 #Pull the latest base image from Dockerhub

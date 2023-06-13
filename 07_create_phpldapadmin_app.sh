@@ -1,5 +1,11 @@
 #!/bin/bash
 
+echo ""
+echo "================================================================================"
+echo "=== In 07_create_phpldapadmin_app.sh ==========================================="
+echo "================================================================================"
+echo ""
+
 # Create the phpldapadmin app
 oc new-app --name phpldapadmin --as-deployment-config -e PHPLDAPADMIN_LDAP_HOSTS=openldap ${PHPLDAPADMINIMAGESTREAM}
 

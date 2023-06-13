@@ -1,5 +1,11 @@
 #!/bin/bash
 
+echo ""
+echo "================================================================================"
+echo "=== In 02_setup_env.sh ========================================================="
+echo "================================================================================"
+echo ""
+
 # Enable public registry route on OpenShift cluster
 oc patch configs.imageregistry.operator.openshift.io/cluster --type merge -p '{"spec":{"defaultRoute":true}}'
 

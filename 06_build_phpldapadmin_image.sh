@@ -20,5 +20,8 @@ EOF
 # Build the phpldapadmin image
 podman build -t ${PHPLDAPADMINIMAGE} -f new_Dockerfile_phpldapadmin
 
+# Login to the OpenShift cluster registry
+podman login $(oc registry info --public) -u kubeadmin -p $(oc whoami -t) --tls-verify=false
+
 # Push to OpenShift cluster registry
 podman push ${PHPLDAPADMINIMAGE} --tls-verify=false

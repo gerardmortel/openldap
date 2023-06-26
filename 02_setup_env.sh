@@ -12,11 +12,9 @@ oc patch configs.imageregistry.operator.openshift.io/cluster --type merge -p '{"
 # Check if access exists to OCP image registry
 while [ true ]
 do
-    oc registry info --public
+    export OCPREGISTRYROUTE=$(oc registry info --public)
     if [ $? -eq 0 ]; then
         echo "Public route for OpenShift cluster registry IS available."
-        export OCPREGISTRYROUTE="$(oc registry info --public)"
-        sleep 10
         break
     else
         echo "Public route for OpenShift cluster registry is NOT available."

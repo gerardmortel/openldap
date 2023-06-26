@@ -16,6 +16,7 @@ do
     if [ $? -eq 0 ]; then
         echo "Public route for OpenShift cluster registry IS available."
         export OCPREGISTRYROUTE="$(oc registry info --public)"
+        sleep 10
         break
     else
         echo "Public route for OpenShift cluster registry is NOT available."

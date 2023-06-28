@@ -36,6 +36,6 @@ export KUBEADMINPASSWORD=""
 export STORAGECLASSNAME="nfs-managed-storage"
 
 echo "================================================================================"
-echo "========= OpenLDAP image is: [${OPENLDAPIMAGE}] ================================"
-echo "==========PhpLDAP admin image is: [${PHPLDAPADMINIMAGE}] ======================="
+echo "========= OpenLDAP image is: [${OPENLDAPIMAGE}] "
+echo "========= PhpLDAP admin image is: [${PHPLDAPADMINIMAGE}] "
 echo "================================================================================"

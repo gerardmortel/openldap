@@ -1,5 +1,8 @@
 #!/bin/bash
 
+. ./02_setup_env.sh
+oc project ${NS}
+
 echo ""
 echo "================================================================================"
 echo "=== In 08_delete_all.sh ========================================================"
@@ -19,3 +22,6 @@ oc delete svc/ingress-openldap
 oc delete dc/phpldapadmin
 oc delete svc/phpldapadmin
 oc delete route/phpldapadmin
+
+# Delete all image streams
+oc get is | awk '{print $1}' | grep -v NAME | xargs oc delete is

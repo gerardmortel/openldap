@@ -25,3 +25,11 @@ oc delete route/phpldapadmin
 
 # Delete all image streams
 oc get is | awk '{print $1}' | grep -v NAME | xargs oc delete is
+# oc delete is openldap-bootstrap
+# oc delete is phpldapadmin-new
+
+# Delete the PVCs
+oc delete pvc ldap-config ldap-data
+
+# Delete images from podman
+podman images | awk '{print $3}' | grep -v IMAGE | xargs podman rmi

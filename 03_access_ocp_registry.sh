@@ -26,6 +26,9 @@ update-ca-trust
 systemctl stop podman
 systemctl start podman
 
+# Login to the OpenShift cluster
+oc login -u kubeadmin -p $KUBEADMINPASSWORD
+
 # Load the domain.crt in a configmap
 rm -f /certs/ca.crt
 cp /certs/domain.crt /certs/ca.crt
@@ -33,9 +36,6 @@ oc create configmap registry-config -n openshift-config --from-file=$HOSTNAME..5
 
 #  Tell the OpenShift cluster to trust the podman private registry
 oc patch image.config.openshift.io/cluster --patch '{"spec":{"additionalTrustedCA":{"name":"registry-config"}}}' --type=merge
-
-# Login to the OpenShift cluster
-oc login -u kubeadmin -p $KUBEADMINPASSWORD
 
 # Check if we can login to the OpenShift cluster registry
 while [ true ]

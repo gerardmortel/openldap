@@ -6,7 +6,8 @@ echo "=== In 04_build_openldap_image.sh ========================================
 echo "================================================================================"
 echo ""
 
-# Build Container Image
+# Create Dockerfile for openldap container image
+echo "" &&  echo "#### Create Dockerfile for openldap container image" && echo ""
 cat << EOF > new_Dockerfile_OpenLDAP
 #Pull the latest base image from Dockerhub
 FROM docker.io/osixia/openldap:latest
@@ -20,10 +21,24 @@ COPY bootstrap.ldif /container/service/slapd/assets/config/bootstrap/ldif/50-boo
 EOF
 
 # Build the openldap image
+echo "" &&  echo "#### Build the openldap image" && echo ""
 podman build -t ${OPENLDAPIMAGE} -f new_Dockerfile_OpenLDAP
 
-# Login to the OpenShift cluster registry
-podman login $(oc registry info --public) -u kubeadmin -p $(oc whoami -t) --tls-verify=false
+# Check if we can login to the OpenShift cluster registry
+echo "" &&  echo "#### Check if we can login to the OpenShift cluster registry" && echo ""
+while [ true ]
+do
+    podman login $(oc registry info --public) -u kubeadmin -p $(oc whoami -t) --tls-verify=false
+    if [ $? -eq 0 ]; then
+        echo "#### Successfully logged in to OpenShift cluster registry"
+        break
+    else
+        echo "#### Unable to login to OpenShift cluster registry"
+        echo "#### Sleeping for 10 seconds"
+        sleep 10
+    fi
+done
 
-# Push image to OpenShift cluster registry
+# Push openldap image to OpenShift cluster registry
+echo "" &&  echo "#### Push openldap image to OpenShift cluster registry" && echo ""
 podman push ${OPENLDAPIMAGE} --tls-verify=false

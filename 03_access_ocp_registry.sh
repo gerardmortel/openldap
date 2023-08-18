@@ -37,6 +37,7 @@ oc login -u kubeadmin -p $KUBEADMINPASSWORD
 echo "" &&  echo "#### Load the domain.crt in a configmap" && echo ""
 rm -f /certs/ca.crt
 cp /certs/domain.crt /certs/ca.crt
+oc delete configmap registry-config -n openshift-config
 oc create configmap registry-config -n openshift-config --from-file=$HOSTNAME..5000=/certs/ca.crt
 
 #  Tell the OpenShift cluster to trust the podman private registry

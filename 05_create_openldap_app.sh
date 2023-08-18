@@ -27,6 +27,12 @@ echo "" &&  echo "#### Create the openldap app" && echo ""
 # oc new-app --name openldap --as-deployment-config -e LDAP_ADMIN_PASSWORD=${LDAPADMINPASSWORD} ${DOCKERHUBIMAGE}
 oc new-app --name openldap --as-deployment-config -e LDAP_ADMIN_PASSWORD=${LDAPADMINPASSWORD} ${OPENLDAPIMAGESTREAM}
 
+# Run next 2 commands at the same time or you'll get an error in the log tha the other directory is not empty
+# Create storage for the openldap app
+echo "" &&  echo "#### Create storage for the openldap app" && echo ""
+oc set volume dc/openldap --add --name=ldap-data --mount-path=/var/lib/ldap -t pvc --claim-name=ldap-data --claim-size=1G --claim-class=${STORAGECLASSNAME}
+oc set volume dc/openldap --add --name=ldap-config --mount-path=/etc/ldap/slapd.d -t pvc --claim-name=ldap-config --claim-size=1G --claim-class=${STORAGECLASSNAME}
+
 # Patch the app with a Recreate strategy to stop the constant pod killing
 echo "" &&  echo "#### Patch the app with a Recreate strategy to stop the constant pod killing" && echo ""
 #oc patch dc/openldap -p '{"spec":{"strategy":{"type":"Recreate"},"template":{"spec":{"serviceAccountName":"openldap"}}}}'
@@ -43,9 +49,3 @@ oc patch dc/openldap --patch-file='new_dc_openldap_patch.yaml' --type='merge'
 # Expose the openldap app
 echo "" &&  echo "#### Expose the openldap app" && echo ""
 oc expose dc/openldap --type=LoadBalancer --name=ingress-openldap
-
-# Run next 2 commands at the same time or you'll get an error in the log tha the other directory is not empty
-# Create storage for the openldap app
-echo "" &&  echo "#### Create storage for the openldap app" && echo ""
-oc set volume dc/openldap --add --name=ldap-data --mount-path=/var/lib/ldap -t pvc --claim-name=ldap-data --claim-size=1G --claim-class=${STORAGECLASSNAME}
-oc set volume dc/openldap --add --name=ldap-config --mount-path=/etc/ldap/slapd.d -t pvc --claim-name=ldap-config --claim-size=1G --claim-class=${STORAGECLASSNAME}

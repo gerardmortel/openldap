@@ -47,6 +47,8 @@ export PHPLDAPADMINIMAGESTREAM="phpldapadmin_new:1.0"
 export PHPLDAPADMINIMAGE="${OCPREGISTRYROUTE}/${NS}/${PHPLDAPADMINIMAGESTREAM}"
 export LDAPADMINPASSWORD=""
 export KUBEADMINPASSWORD=""
+export DOCKERUSERNAME=""
+export DOCKERPASSWORD=""
 export STORAGECLASSNAME="nfs-managed-storage"
 
 echo "================================================================================"

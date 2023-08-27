@@ -25,6 +25,6 @@ The purpose of this repo is to install openldap on OpenShift
 7. unzip main.zip
 8. rm -f main.zip
 9. cd openldap-main
-10. STOP!! Put your values for LDAPADMINPASSWORD and KUBEADMINPASSWORD inside file 02_setup_env.sh
+10. STOP!! Put your values for LDAPADMINPASSWORD, KUBEADMINPASSWORD, DOCKERUSERNAME, DOCKERPASSWORD inside file 02_setup_env.sh
 11. ./01_driver.sh
 12. Login with cn=admin,dc=your,dc=company,dc=com and the password you set in step 10

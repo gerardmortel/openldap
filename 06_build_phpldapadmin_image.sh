@@ -6,6 +6,9 @@ echo "=== In 06_build_phpldapadmin_image.sh ====================================
 echo "================================================================================"
 echo ""
 
+# Login to Docker
+podman login docker.io -u $DOCKERUSERNAME -p $DOCKERPASSWORD
+
 # Create phpldapadmin Dockerfile
 echo "" &&  echo "#### Create phpldapadmin Dockerfile" && echo ""
 cat << EOF > new_Dockerfile_phpldapadmin

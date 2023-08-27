@@ -6,6 +6,9 @@ echo "=== In 04_build_openldap_image.sh ========================================
 echo "================================================================================"
 echo ""
 
+# Login to Docker
+podman login docker.io -u $DOCKERUSERNAME -p $DOCKERPASSWORD
+
 # Create Dockerfile for openldap container image
 echo "" &&  echo "#### Create Dockerfile for openldap container image" && echo ""
 cat << EOF > new_Dockerfile_OpenLDAP

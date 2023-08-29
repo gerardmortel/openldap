@@ -40,6 +40,17 @@ do
     fi
 done
 
-# Push phpldapadmin image to OpenShift cluster registry
-echo "" &&  echo "#### Push phpldapadmin image to OpenShift cluster registry" && echo ""
-podman push ${PHPLDAPADMINIMAGE} --tls-verify=false
+# Push openldap image to OpenShift cluster registry
+echo "" &&  echo "#### Push ${PHPLDAPADMINIMAGE} image to OpenShift cluster registry" && echo ""
+while [ true ]
+do
+    podman push ${PHPLDAPADMINIMAGE} --tls-verify=false
+    if [ $? -eq 0 ]; then
+        echo "#### Successfully pushed ${PHPLDAPADMINIMAGE} image to OpenShift cluster registry"
+        break
+    else
+        echo "#### Unable to push ${PHPLDAPADMINIMAGE} image to OpenShift cluster registry"
+        echo "#### Sleeping for 10 seconds"
+        sleep 10
+    fi
+done

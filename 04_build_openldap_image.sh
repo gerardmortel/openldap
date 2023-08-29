@@ -43,5 +43,16 @@ do
 done
 
 # Push openldap image to OpenShift cluster registry
-echo "" &&  echo "#### Push openldap image to OpenShift cluster registry" && echo ""
-podman push ${OPENLDAPIMAGE} --tls-verify=false
+echo "" &&  echo "#### Push ${OPENLDAPIMAGE} image to OpenShift cluster registry" && echo ""
+while [ true ]
+do
+    podman push ${OPENLDAPIMAGE} --tls-verify=false
+    if [ $? -eq 0 ]; then
+        echo "#### Successfully pushed ${OPENLDAPIMAGE} image to OpenShift cluster registry"
+        break
+    else
+        echo "#### Unable to push ${OPENLDAPIMAGE} image to OpenShift cluster registry"
+        echo "#### Sleeping for 10 seconds"
+        sleep 10
+    fi
+done

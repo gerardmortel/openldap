@@ -46,6 +46,7 @@ done
 echo "" &&  echo "#### Push ${OPENLDAPIMAGE} image to OpenShift cluster registry" && echo ""
 while [ true ]
 do
+    podman login $(oc registry info --public) -u kubeadmin -p $(oc whoami -t) --tls-verify=false
     podman push ${OPENLDAPIMAGE} --tls-verify=false
     if [ $? -eq 0 ]; then
         echo "#### Successfully pushed ${OPENLDAPIMAGE} image to OpenShift cluster registry"

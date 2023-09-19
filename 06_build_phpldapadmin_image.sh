@@ -6,6 +6,14 @@ echo "=== In 06_build_phpldapadmin_image.sh ====================================
 echo "================================================================================"
 echo ""
 
+# Create the project where openldap will live if it does not already exist
+echo "" &&  echo "#### Create the project where openldap will live if it does not already exist" && echo ""
+oc new-project ${NS}
+
+# Switch to project cp4ba
+echo "" &&  echo "#### Switch to project cp4ba" && echo ""
+oc project ${NS}
+
 # Login to Docker
 podman login docker.io -u $DOCKERUSERNAME -p $DOCKERPASSWORD
 

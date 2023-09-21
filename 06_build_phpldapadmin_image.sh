@@ -10,8 +10,8 @@ echo ""
 echo "" &&  echo "#### Create the project where openldap will live if it does not already exist" && echo ""
 oc new-project ${NS}
 
-# Switch to project cp4ba
-echo "" &&  echo "#### Switch to project cp4ba" && echo ""
+# Switch to correct project
+echo "" &&  echo "#### Switch to project ${NS}" && echo ""
 oc project ${NS}
 
 # Login to Docker

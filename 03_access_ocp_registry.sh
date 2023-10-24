@@ -11,17 +11,18 @@ export GODEBUG=x509ignoreCN=0
 
 # Make the certificates.  Note that your hostname should go in the DNS entry
 echo "" &&  echo "#### Make the certificates" && echo ""
-mkdir -p /certs
-cd /certs
+rm -f ${CERTSDIRECTORY}
+mkdir -p ${CERTSDIRECTORY}
+cd ${CERTSDIRECTORY}
 openssl req \
- -newkey rsa:4096 -nodes -sha256 -keyout /certs/domain.key \
+ -newkey rsa:4096 -nodes -sha256 -keyout ${CERTSDIRECTORY}/domain.key \
  -addext "subjectAltName = DNS:$HOSTNAME" \
  -subj "/C=US/ST=IL/L=Chicago/O=IBM/OU=Expert Labs/CN=$HOSTNAME" \
- -x509 -days 365 -out /certs/domain.crt
+ -x509 -days 365 -out ${CERTSDIRECTORY}/domain.crt
 
 # Get RHEL to trust source.  Note that your hostname should be the name of your certifcate
 echo "" &&  echo "#### Get RHEL to trust source" && echo ""
-cp /certs/domain.crt /etc/pki/ca-trust/source/anchors/$HOSTNAME.crt
+cp ${CERTSDIRECTORY}/domain.crt /etc/pki/ca-trust/source/anchors/$HOSTNAME.crt
 update-ca-trust
 
 # Restart podman
@@ -35,10 +36,10 @@ oc login -u kubeadmin -p $KUBEADMINPASSWORD
 
 # Load the domain.crt in a configmap
 echo "" &&  echo "#### Load the domain.crt in a configmap" && echo ""
-rm -f /certs/ca.crt
-cp /certs/domain.crt /certs/ca.crt
+rm -f ${CERTSDIRECTORY}/ca.crt
+cp ${CERTSDIRECTORY}/domain.crt ${CERTSDIRECTORY}/ca.crt
 oc delete configmap registry-config -n openshift-config
-oc create configmap registry-config -n openshift-config --from-file=$HOSTNAME..5000=/certs/ca.crt
+oc create configmap registry-config -n openshift-config --from-file=$HOSTNAME..5000=${CERTSDIRECTORY}/ca.crt
 
 #  Tell the OpenShift cluster to trust the podman private registry
 echo "" &&  echo "#### Tell the OpenShift cluster to trust the podman private registry" && echo ""

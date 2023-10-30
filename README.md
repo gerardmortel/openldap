@@ -9,10 +9,10 @@ cloudctl case and corresponding ibm-pak commands
 https://www.ibm.com/docs/en/cpfs?topic=plugin-cloudctl-case-corresponding-pak-commands
 
 # Purpose
-The purpose of this repo is to install openldap on OpenShift
+The purpose of this repo is to install openldap on OpenShift on IBM Fyre or Techzone
 
 # Prerequisites
-1. OpenShift cluster on Fyre
+1. OpenShift cluster on Fyre or Techzone
 2. NFS Storage configured https://github.com/gerardmortel/nfs-storage-for-fyre
 
 # Instructions

@@ -39,18 +39,21 @@ do
     fi
 done
 
-export NS="cp4ba"
+# Highest priority variables
+export KUBEADMINPASSWORD=""
+export LDAPADMINPASSWORD=""
+export DOCKERUSERNAME=""
+export DOCKERPASSWORD=""
+export STORAGECLASSNAME="" # managed-nfs-storage
+export CERTSDIRECTORY="" # /tmp/certs
+export NS="" # cp4ba
+
+# Lower priority variables
 export SERVICEACCOUNTNAME="openldap"
 export OPENLDAPIMAGESTREAM="openldap_bootstrap:1.0"
 export OPENLDAPIMAGE="${OCPREGISTRYROUTE}/${NS}/${OPENLDAPIMAGESTREAM}"
 export PHPLDAPADMINIMAGESTREAM="phpldapadmin_new:1.0"
 export PHPLDAPADMINIMAGE="${OCPREGISTRYROUTE}/${NS}/${PHPLDAPADMINIMAGESTREAM}"
-export LDAPADMINPASSWORD=""
-export KUBEADMINPASSWORD=""
-export DOCKERUSERNAME=""
-export DOCKERPASSWORD=""
-export STORAGECLASSNAME=""
-export CERTSDIRECTORY=""
 
 echo "================================================================================"
 echo "========= OpenLDAP image is: [${OPENLDAPIMAGE}] "

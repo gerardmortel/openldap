@@ -6,6 +6,9 @@ echo "=== In 05_create_openldap_app.sh =========================================
 echo "================================================================================"
 echo ""
 
+echo "#### Sleep 30 seconds to allow for image push to settle down.  Without this, app creation fails"
+sleep 30
+
 # Create the project where openldap will live if it does not already exist
 echo "" &&  echo "#### Create the project where openldap will live if it does not already exist" && echo ""
 oc new-project ${NS}

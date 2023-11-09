@@ -1,12 +1,9 @@
 # Install OpenLDAP on OpenShift
-# https://github.ibm.com/gmortel/openldap
+[https://github.ibm.com/gmortel/openldap](https://github.ibm.com/gmortel/openldap)
 
 # Resources
-Using the OCP registry
-https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/22.0.2?topic=SSYHZ8_22.0.2/com.ibm.dba.install/op_topics/tsk_images_enterp.htm
-
-cloudctl case and corresponding ibm-pak commands
-https://www.ibm.com/docs/en/cpfs?topic=plugin-cloudctl-case-corresponding-pak-commands
+1. [Using the OpenShift registry - Getting access to images from a local image registry](https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/22.0.2?topic=SSYHZ8_22.0.2/com.ibm.dba.install/op_topics/tsk_images_enterp.htm)
+2. [cloudctl case and corresponding ibm-pak commands](https://www.ibm.com/docs/en/cpfs?topic=plugin-cloudctl-case-corresponding-pak-commands)
 
 # Purpose
 The purpose of this repo is to install openldap on OpenShift on IBM Fyre or Techzone
@@ -16,7 +13,7 @@ The purpose of this repo is to install openldap on OpenShift on IBM Fyre or Tech
 2. NFS Storage configured https://github.com/gerardmortel/nfs-storage-for-fyre
 
 # Instructions
-1. ssh into the infrastructure node as root (e.g. ssh root@api.slavers.cp.fyre.ibm.com)
+1. ssh into the infrastructure node as root (e.g. ssh root@api.bravers.cp.fyre.ibm.com)
 2. yum install -y git unzip podman
 3. cd
 4. rm -f main.zip

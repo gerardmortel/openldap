@@ -51,7 +51,7 @@ do
         break
     else
         echo "#### Unable to login to OpenShift cluster registry"
-        echo "#### Sleeping for 10 seconds"
-        sleep 10
+        echo "#### Sleeping for 20 seconds"
+        sleep 20
     fi
 done
